@@ -17,8 +17,15 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
+#include <esp8266.h>
 #include <stdint.h>
 #include "stm32utils.h"
+
+#ifdef CGISTM32_DBG
+#define DBG(format, ...) do { os_printf(format, ## __VA_ARGS__); } while(0)
+#else
+#define DBG(format, ...) do { } while(0)
+#endif
 
 /* detect CPU endian */
 char cpu_le() {
@@ -44,9 +51,9 @@ uint32_t le_u32(const uint32_t v) {
         return v;
 }
 
-void printStatus(FILE *fd, int condition){
+void printStatus(int condition){
 	if(condition)
-		fprintf(fd, "Error!\n");
+        DBG("Error!\n");
 	else
-		fprintf(fd, "OK\n");
+        DBG("OK\n");
 }

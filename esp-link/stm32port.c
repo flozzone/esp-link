@@ -23,6 +23,11 @@
 #include "stm32serial.h"
 #include "stm32port.h"
 
+#ifdef CGISTM32_DBG
+#define DBG(format, ...) do { os_printf(format, ## __VA_ARGS__); } while(0)
+#else
+#define DBG(format, ...) do { } while(0)
+#endif
 
 extern struct port_interface port_serial;
 extern struct port_interface port_i2c;
@@ -45,11 +50,11 @@ port_err_t port_open(struct port_options *ops, struct port_interface **outport)
 			continue;
 		if (ret == PORT_ERR_OK)
 			break;
-		fprintf(stderr, "Error probing interface \"%s\"\n",
+        DBG("Error probing interface \"%s\"\n",
 			(*port)->name);
 	}
 	if (*port == NULL) {
-		fprintf(stderr, "Cannot handle device \"%s\"\n",
+        DBG("Cannot handle device \"%s\"\n",
 			ops->device);
 		return PORT_ERR_UNKNOWN;
 	}
