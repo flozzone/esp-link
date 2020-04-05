@@ -18,7 +18,7 @@
 */
 
 #include <stdint.h>
-#include "utils.h"
+#include "stm32utils.h"
 
 /* detect CPU endian */
 char cpu_le() {

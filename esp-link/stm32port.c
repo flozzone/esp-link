@@ -20,8 +20,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "serial.h"
-#include "port.h"
+#include "stm32serial.h"
+#include "stm32port.h"
 
 
 extern struct port_interface port_serial;

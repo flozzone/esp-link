@@ -32,6 +32,7 @@
 #include "log.h"
 #include "gpio.h"
 #include "cgiservices.h"
+#include "cgistm32.h"
 
 #ifdef WEBSERVER
 #include "web-server.h"
@@ -82,6 +83,9 @@ HttpdBuiltInUrl builtInUrls[] = {
   { "/pgmmega/read/*", cgiMegaRead, NULL },		// Download stuff (to verify)
   { "/pgmmega/fuse/*", cgiMegaFuse, NULL },		// Read or write fuse
   { "/pgmmega/rebootmcu", cgiMegaRebootMCU, NULL },	// Get out of programming mode
+
+  { "/stm32/sync", cgiSTM32Sync, NULL },
+  { "/stm32/upload", cgiSTM32Data, NULL },
 
   { "/log/text", ajaxLog, NULL },
   { "/log/dbg", ajaxLogDbg, NULL },

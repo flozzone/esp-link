@@ -26,8 +26,8 @@
 #include <unistd.h>
 
 #include "stm32.h"
-#include "port.h"
-#include "utils.h"
+#include "stm32port.h"
+#include "stm32utils.h"
 
 #define STM32_ACK	0x79
 #define STM32_NACK	0x1F
